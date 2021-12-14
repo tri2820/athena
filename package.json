@@ -1,5 +1,5 @@
 {
-  "name": "my-app",
+  "name": "athena",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -10,11 +10,16 @@
     "@types/node": "^12.0.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "@types/simple-peer": "^9.11.3",
+    "@types/webtorrent": "^0.109.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-router-dom": "^6.1.1",
     "react-scripts": "4.0.3",
+    "simple-peer": "^9.11.0",
     "typescript": "^4.1.2",
-    "web-vitals": "^1.0.1"
+    "web-vitals": "^1.0.1",
+    "webtorrent": "^1.5.8"
   },
   "scripts": {
     "start": "react-scripts start",

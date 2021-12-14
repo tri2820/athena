@@ -1,12 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { Route, Routes, BrowserRouter } from 'react-router-dom';
+import WithNavigateApp from './App';
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+    <Routes>
+      <Route path='/' element={<WithNavigateApp/>}>
+        <Route path='/movie/:torrentcode' element={null}></Route>
+      </Route>
+    </Routes>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
