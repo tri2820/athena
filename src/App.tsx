@@ -36,8 +36,10 @@ class App extends React.Component<Props> {
     super(props)
     this.client = new WebTorrent()
     if (this.props.params.torrentcode) {
+      let torrentID = atob(this.props.params.torrentcode)
+      console.info('Asking for torrent', torrentID)
       this.movie = 'loading'
-      this.client.add(atob(this.props.params.torrentcode), this.toMovieSession)
+      this.client.add(torrentID, this.toMovieSession)
     } else {
       this.movie = undefined
     }
@@ -48,14 +50,19 @@ class App extends React.Component<Props> {
     this.props.navigate(`movie/${btoa(torrentcode)}`);
   }
 
+  
   toMovieSession = (torrent : Torrent) => {
-    console.log("file seeded", torrent)
+    console.info('To movie session', torrent)
     let file = torrent.files.find(file => file.name.endsWith('.mp4'))
     if (file === undefined) throw Error('Cannot find a mp4 file in torrent')
     this._toMovieSession(file, torrent.magnetURI)
+    console.log('debug torrent', torrent.path, torrent)
   }
 
-  seedFile = (file : File) => this.client.seed(file, this.toMovieSession)
+  seedFile = (file : File) => {
+    console.info("Parsing file to seed", file)
+    this.client.seed(file, this.toMovieSession)
+  }
 }
 
 type Props = {
